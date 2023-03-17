@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Navigation from "./Navigation";
 
 type Props = {
   title?: string;
@@ -19,6 +20,7 @@ function Layout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navigation />
       <main className="min-h-screen bg-background">{children}</main>
     </>
   );
