@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Navigation from "./Navigation";
+import Navigation from "@/components/navigation";
 
 type Props = {
   title?: string;
