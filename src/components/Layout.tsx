@@ -21,7 +21,7 @@ function Layout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navigation />
-      <main className="min-h-screen bg-background">{children}</main>
+      <main className="bg-background">{children}</main>
     </>
   );
 }
