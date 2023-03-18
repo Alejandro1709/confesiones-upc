@@ -12,7 +12,13 @@ function NavLinks() {
         {NAVIGATION_LINKS.map((link) => (
           <NavLink key={link.name} link={link} />
         ))}
-        <li>{session ? <LogoutButton /> : <LoginButton />}</li>
+        <li>
+          {session?.user ? (
+            <LogoutButton image={session.user?.image} />
+          ) : (
+            <LoginButton />
+          )}
+        </li>
       </ul>
     </nav>
   );
