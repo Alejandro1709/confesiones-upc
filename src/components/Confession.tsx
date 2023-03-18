@@ -6,8 +6,18 @@ type Props = {
 };
 
 function Confession({ confession }: Props) {
+  const slugify = (str: string) => {
+    return str
+      .toString()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim()
+      .replace(/[\s\W-]+/g, "-");
+  };
+
   return (
-    <Link href={`/confesiones/${confession.slug}`}>
+    <Link href={`/confesiones/${slugify(confession.title)}`}>
       <article className="flex h-[187px] w-[383px] cursor-pointer select-none flex-col items-center justify-center border bg-white p-2 transition-all hover:scale-95">
         <p className="text-center text-lg font-medium">{confession.content}</p>
       </article>
