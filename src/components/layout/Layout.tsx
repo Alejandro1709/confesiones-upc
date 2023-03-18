@@ -1,9 +1,11 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Navigation from "@/components/navigation";
 import Modal from "../modal";
 import CreateForm from "../modal/CreateForm";
 import useModal from "@/hooks/useModal";
 import QueryWrapper from "../auth/QueryWrapper";
+import ConfessionDetail from "../modal/ConfessionDetail";
 
 type Props = {
   title?: string;
@@ -17,6 +19,10 @@ function Layout({
   description = "Una página web donde podrás confesarnos lo que desees sobre lo que pasa dentro de la universidad.",
 }: Props) {
   const { isOpen } = useModal();
+  const router = useRouter();
+
+  const { type } = router.query;
+
   return (
     <>
       <Head>
@@ -28,7 +34,7 @@ function Layout({
       <QueryWrapper>
         {isOpen ? (
           <Modal>
-            <CreateForm />
+            {type === "create" ? <CreateForm /> : <ConfessionDetail />}
           </Modal>
         ) : null}
         <Navigation />

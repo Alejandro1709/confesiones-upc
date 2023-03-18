@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 "use client";
 
+import Router from "next/router";
 import useModal from "@/hooks/useModal";
 import LogoutButton from "./LogoutButton";
 
@@ -12,12 +14,21 @@ type Props = {
 
 function Logged({ session }: Props) {
   const { handleOpen } = useModal();
+
+  const handleOpenForm = () => {
+    Router.push({
+      pathname: "/",
+      query: { type: "create" },
+    });
+    handleOpen();
+  };
+
   return (
     <ul className="flex items-center gap-4">
       <li>
         <button
           className="flex items-center gap-2 rounded-md bg-gray-700 p-2 text-sm text-white hover:bg-gray-800"
-          onClick={handleOpen}
+          onClick={handleOpenForm}
         >
           Crear confesión
         </button>
