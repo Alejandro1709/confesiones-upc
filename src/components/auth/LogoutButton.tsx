@@ -14,6 +14,7 @@ function LogoutButton({ image }: { image: string }) {
         width={20}
         height={20}
         alt="Logout"
+        priority
       />
       Cerrar Sesión
     </button>
