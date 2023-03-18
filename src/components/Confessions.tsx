@@ -3,7 +3,7 @@ import Confession from "./Confession";
 
 function Confessions() {
   return (
-    <div className="mt-6 flex flex-col place-items-center gap-4 md:grid md:grid-cols-4 md:gap-4">
+    <div className="mt-6 flex flex-col items-center gap-4 md:flex-row md:flex-wrap">
       {confessions.map((confession) => (
         <Confession key={confession.id} confession={confession} />
       ))}
