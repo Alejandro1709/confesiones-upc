@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Navigation from "@/components/navigation";
+import Modal from "../modal";
+import CreateForm from "../modal/CreateForm";
 
 type Props = {
   title?: string;
@@ -20,6 +22,9 @@ function Layout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Modal>
+        <CreateForm />
+      </Modal>
       <Navigation />
       <main className="mx-6 bg-background md:mx-40">{children}</main>
     </>

@@ -18,7 +18,6 @@ export default function Home({ session }: HomeProps) {
     <AuthProvider session={session}>
       <Layout title="Confesiones UPC | Feed">
         <Wrapper>
-          {/* <h1 className="text-2xl font-bold">Feed</h1> */}
           <Confessions />
         </Wrapper>
       </Layout>
