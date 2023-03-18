@@ -1,25 +1,17 @@
-import { NAVIGATION_LINKS } from "@/constants/navigation";
-import useSession from "@/hooks/useSession";
-import LoginButton from "../auth/LoginButton";
-import LogoutButton from "../auth/LogoutButton";
-import NavLink from "./NavLink";
+import Logged from "../auth/Logged";
+import NotLogged from "../auth/NotLogged";
 
-function NavLinks() {
-  const { session } = useSession();
+type Props = {
+  session?: {
+    expires: string;
+    user: { email: string; image: string; name: string };
+  };
+};
+
+function NavLinks({ session }: Props) {
   return (
     <nav className="hidden md:block">
-      <ul className="flex items-center gap-6">
-        {NAVIGATION_LINKS.map((link) => (
-          <NavLink key={link.name} link={link} />
-        ))}
-        <li>
-          {session?.user ? (
-            <LogoutButton image={session.user?.image} />
-          ) : (
-            <LoginButton />
-          )}
-        </li>
-      </ul>
+      {session?.user ? <Logged session={session} /> : <NotLogged />}
     </nav>
   );
 }

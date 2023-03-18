@@ -11,6 +11,18 @@ datasource db {
   relationMode = "prisma"
 }
 
+model Confession {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  content   String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+
+  @@index([userId])
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -42,13 +54,14 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String       @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?      @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  confessions    Confession[]
 }
 
 model VerificationToken {

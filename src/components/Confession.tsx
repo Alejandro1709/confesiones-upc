@@ -1,4 +1,8 @@
-import Link from "next/link";
+/* eslint-disable @typescript-eslint/no-floating-promises */
+"use client";
+
+import Router from "next/router";
+import useModal from "@/hooks/useModal";
 import type IConfession from "@/types/confession";
 
 type Props = {
@@ -6,12 +10,23 @@ type Props = {
 };
 
 function Confession({ confession }: Props) {
+  const { handleOpen } = useModal();
+
+  const handleOpenConfession = () => {
+    Router.push({
+      pathname: "/",
+      query: { type: "detail", id: confession.id },
+    });
+    handleOpen();
+  };
+
   return (
-    <Link href={`/confesiones/${confession.slug}`}>
-      <article className="flex h-[187px] w-[383px] cursor-pointer select-none flex-col items-center justify-center border bg-white p-2 transition-all hover:scale-95">
-        <p className="text-center text-lg font-medium">{confession.content}</p>
-      </article>
-    </Link>
+    <article
+      className="flex h-[187px] w-[383px] cursor-pointer select-none flex-col items-center justify-center border bg-white p-2 transition-all hover:scale-95"
+      onClick={handleOpenConfession}
+    >
+      <p className="text-center text-lg font-medium">{confession.content}</p>
+    </article>
   );
 }
 
