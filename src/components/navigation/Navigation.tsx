@@ -3,6 +3,8 @@ import NavForm from "./NavForm";
 import NavLinks from "./NavLinks";
 
 function Navigation() {
+  // const { session } = useSession();
+
   return (
     <header className="flex h-16 items-center justify-center border-b bg-white">
       <div className="mx-6 flex w-full items-center justify-between md:mx-40">

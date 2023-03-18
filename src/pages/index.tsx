@@ -3,22 +3,26 @@ import Confessions from "@/components/Confessions";
 import Wrapper from "@/components/layout/Wrapper";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
-import type ISession from "@/types/session";
+import { AuthProvider } from "@/context/authContext";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type HomeProps = {
-  session?: ISession;
+  session?: {
+    expires: string;
+    user: { email: string; image: string; name: string };
+  };
 };
 
 export default function Home({ session }: HomeProps) {
-  console.log(session);
   return (
-    <Layout title="Confesiones UPC | Feed">
-      <Wrapper>
-        {/* <h1 className="text-2xl font-bold">Feed</h1> */}
-        <Confessions />
-      </Wrapper>
-    </Layout>
+    <AuthProvider session={session}>
+      <Layout title="Confesiones UPC | Feed">
+        <Wrapper>
+          {/* <h1 className="text-2xl font-bold">Feed</h1> */}
+          <Confessions />
+        </Wrapper>
+      </Layout>
+    </AuthProvider>
   );
 }
 
