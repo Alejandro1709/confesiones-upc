@@ -1,4 +1,7 @@
+import useModal from "@/hooks/useModal";
+
 function CreateForm() {
+  const { handleClose } = useModal();
   return (
     <>
       <header className="flex flex-col gap-2">
@@ -27,6 +30,7 @@ function CreateForm() {
         <button
           type="button"
           className="mt-1 w-full rounded-md bg-red-500 p-2 text-white hover:bg-red-600"
+          onClick={handleClose}
         >
           Cancelar
         </button>

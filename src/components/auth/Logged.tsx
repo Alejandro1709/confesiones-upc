@@ -1,5 +1,6 @@
 "use client";
 
+import useModal from "@/hooks/useModal";
 import LogoutButton from "./LogoutButton";
 
 type Props = {
@@ -10,10 +11,14 @@ type Props = {
 };
 
 function Logged({ session }: Props) {
+  const { handleOpen } = useModal();
   return (
     <ul className="flex items-center gap-4">
       <li>
-        <button className="flex items-center gap-2 rounded-md bg-gray-700 p-2 text-sm text-white hover:bg-gray-800">
+        <button
+          className="flex items-center gap-2 rounded-md bg-gray-700 p-2 text-sm text-white hover:bg-gray-800"
+          onClick={handleOpen}
+        >
           Crear confesión
         </button>
       </li>

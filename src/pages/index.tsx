@@ -4,6 +4,7 @@ import Wrapper from "@/components/layout/Wrapper";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { AuthProvider } from "@/context/authContext";
+import { ModalProvider } from "@/context/modalContext";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type HomeProps = {
@@ -16,11 +17,13 @@ type HomeProps = {
 export default function Home({ session }: HomeProps) {
   return (
     <AuthProvider session={session}>
-      <Layout title="Confesiones UPC | Feed">
-        <Wrapper>
-          <Confessions />
-        </Wrapper>
-      </Layout>
+      <ModalProvider>
+        <Layout title="Confesiones UPC | Feed">
+          <Wrapper>
+            <Confessions />
+          </Wrapper>
+        </Layout>
+      </ModalProvider>
     </AuthProvider>
   );
 }
