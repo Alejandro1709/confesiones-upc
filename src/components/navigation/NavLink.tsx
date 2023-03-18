@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type ILink from "@/utils/link";
+import type ILink from "@/types/link";
 
 type Props = {
   link: ILink;

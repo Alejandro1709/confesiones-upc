@@ -1,4 +1,4 @@
-import type ILink from "@/utils/link";
+import type ILink from "@/types/link";
 
 export const NAVIGATION_LINKS: ILink[] = [
   {
@@ -10,11 +10,6 @@ export const NAVIGATION_LINKS: ILink[] = [
     label: "Nueva confesión",
     name: "new-confession",
     href: "/confesiones/nueva",
-  },
-  {
-    label: "Mis confesiones",
-    name: "my-confessions",
-    href: "/confesiones/mis-confesiones",
   },
   {
     label: "Cerrar sesión",
