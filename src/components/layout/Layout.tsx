@@ -3,6 +3,7 @@ import Navigation from "@/components/navigation";
 import Modal from "../modal";
 import CreateForm from "../modal/CreateForm";
 import useModal from "@/hooks/useModal";
+import QueryWrapper from "../auth/QueryWrapper";
 
 type Props = {
   title?: string;
@@ -24,13 +25,15 @@ function Layout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {isOpen ? (
-        <Modal>
-          <CreateForm />
-        </Modal>
-      ) : null}
-      <Navigation />
-      <main className="mx-6 bg-background md:mx-40">{children}</main>
+      <QueryWrapper>
+        {isOpen ? (
+          <Modal>
+            <CreateForm />
+          </Modal>
+        ) : null}
+        <Navigation />
+        <main className="mx-6 bg-background md:mx-40">{children}</main>
+      </QueryWrapper>
     </>
   );
 }
