@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { AuthProvider } from "@/context/authContext";
 import { ModalProvider } from "@/context/modalContext";
+import { ConfessionProvider } from "@/context/confessionContext";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type HomeProps = {
@@ -17,13 +18,15 @@ type HomeProps = {
 export default function Home({ session }: HomeProps) {
   return (
     <AuthProvider session={session}>
-      <ModalProvider>
-        <Layout title="Confesiones UPC | Feed">
-          <Wrapper>
-            <Confessions />
-          </Wrapper>
-        </Layout>
-      </ModalProvider>
+      <ConfessionProvider>
+        <ModalProvider>
+          <Layout title="Confesiones UPC | Feed">
+            <Wrapper>
+              <Confessions />
+            </Wrapper>
+          </Layout>
+        </ModalProvider>
+      </ConfessionProvider>
     </AuthProvider>
   );
 }

@@ -1,3 +1,6 @@
+"use client";
+
+import { useId } from "react";
 import Link from "next/link";
 import type IConfession from "@/types/confession";
 
@@ -6,7 +9,9 @@ type Props = {
 };
 
 function Confession({ confession }: Props) {
+  const id = useId();
   const slugify = (str: string) => {
+    if (!str) return `${confession.id}${id}}`;
     return str
       .toString()
       .normalize("NFD")

@@ -2,12 +2,16 @@ import { useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import useModal from "@/hooks/useModal";
 import axios from "axios";
+import useConfessions from "@/hooks/useConfessions";
+import type IConfession from "@/types/confession";
 
 function CreateForm() {
   const titleRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const { confessions, setConfessions } = useConfessions();
 
   const { handleClose } = useModal();
 
@@ -16,10 +20,11 @@ function CreateForm() {
       setIsLoading(true);
       const title = titleRef.current.value;
       const content = contentRef.current.value;
-      await axios.post("/api/confessions", {
+      const conf: IConfession = await axios.post("/api/confessions", {
         title,
         content,
       });
+      setConfessions([...confessions, { ...conf, content }]);
     }
   };
 

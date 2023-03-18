@@ -1,30 +1,16 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { useState, useEffect } from "react";
+import { useId } from "react";
 import Confession from "./Confession";
-import axios from "axios";
-import type IConfession from "@/types/confession";
+import useConfessions from "@/hooks/useConfessions";
 
 function Confessions() {
-  const [confessions, setConfessions] = useState<IConfession[]>([]);
+  const id = useId();
 
-  const fetchConfessions = async () => {
-    try {
-      const { data } = await axios.get("/api/confessions");
-      setConfessions(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    fetchConfessions();
-  }, []);
+  const { confessions } = useConfessions();
 
   return (
     <div className="mt-6 flex flex-col items-center gap-4 md:flex-row md:flex-wrap">
       {confessions.map((confession) => (
-        <Confession key={confession.id} confession={confession} />
+        <Confession key={`${confession.id}##${id}`} confession={confession} />
       ))}
     </div>
   );
