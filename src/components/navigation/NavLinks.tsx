@@ -1,4 +1,5 @@
 import { NAVIGATION_LINKS } from "@/constants/navigation";
+import LoginButton from "../auth/LoginButton";
 import NavLink from "./NavLink";
 
 function NavLinks() {
@@ -8,6 +9,9 @@ function NavLinks() {
         {NAVIGATION_LINKS.map((link) => (
           <NavLink key={link.name} link={link} />
         ))}
+        <li>
+          <LoginButton />
+        </li>
       </ul>
     </nav>
   );

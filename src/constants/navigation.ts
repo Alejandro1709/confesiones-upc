@@ -11,10 +11,4 @@ export const NAVIGATION_LINKS: ILink[] = [
     name: "new-confession",
     href: "/confesiones/nueva",
   },
-  {
-    label: "Cerrar sesión",
-    name: "logout",
-    isButton: true,
-    href: "#!",
-  },
 ];
