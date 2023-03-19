@@ -6,6 +6,7 @@ import CreateForm from "../modal/CreateForm";
 import useModal from "@/hooks/useModal";
 import QueryWrapper from "../auth/QueryWrapper";
 import ConfessionDetail from "../modal/ConfessionDetail";
+import Tabbar from "../navigation/Tabbar";
 
 type Props = {
   title?: string;
@@ -39,6 +40,7 @@ function Layout({
         ) : null}
         <Navigation />
         <main className="mx-6 bg-background md:mx-40">{children}</main>
+        <Tabbar />
       </QueryWrapper>
     </>
   );
